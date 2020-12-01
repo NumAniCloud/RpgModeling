@@ -1,0 +1,38 @@
+@startuml
+
+BattleContext o-- Player
+BattleContext o-- Battler
+BattleEvent <-- BattleEventHandler
+BattleEvent <-- ActiveEffect
+BattleEvent <-- PassiveEffect
+ActiveEffect o-- BattleEventHandler
+PassiveEffect o-- BattleEventHandler
+ActiveProperty o-- ActiveEffect
+PassiveProperty o-- PassiveEffect
+ActiveProperty o-- ActiveTargetRange : ActiveEffect?
+ActiveTargetRange o-- ActiveTargetFilter
+ActiveTargetResult o-- ITargetable
+ITargetable <|-- Battler
+Battler o-- PassiveProperty : PassiveSkill
+Player o-- PassiveProperty : PartySkill
+TargetSelection <-- Battler
+InvocationContext <-- TargetSelection
+AiInvocationContext <-- Battler
+TurnContext <-- Battler
+BattleFlow o-- BattleContext
+TurnSystem <-- BattleFlow
+BattlerOrder <-- TurnSystem
+ActiveProperty o-- VisualEffect
+VisualEffectContext <-- VisualEffect
+PassiveEffect <-- PassiveEffectManager
+PassiveEffectManager <-- Battler
+PlayerMainTactics <-- Player
+PlayerMainTactics <-- Battler
+Ability <-- Battler
+Attribute <-- Ability
+Tolerance <-- Ability
+HP <-- Ability
+MP <-- Ability
+TP <-- Ability
+
+@enduml

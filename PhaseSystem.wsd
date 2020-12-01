@@ -1,0 +1,96 @@
+@startuml overall
+
+package "OverAll" {
+    PhaseGroup <-- PhaseProcessor
+    PhaseGroup <-- PhaseImpl
+
+    PhaseMethod <-- ContextType
+    PhaseMethod <-- PhaseProcessorMethod
+    PhaseMethod <-- PhaseMethodImpl
+
+    ResultType <-- PhaseProcessorMethod_Result
+    ResultType <-- PhaseMethodImpl_Result
+
+    ContextParameter <-- ContextType_DelegationProperty
+    ContextParameter <-- PhaseProcessorMethod_Parameter
+    ContextParameter <-- PhaseMethodImpl_Parameter
+
+    AdditionalParameter <-- ContextType_Property
+    AdditionalParameter <-- PhaseProcessorMethod_Parameter
+    AdditionalParameter <-- PhaseMethodImpl_Parameter
+
+    PhaseGroup o-- PhaseMethod
+    PhaseMethod o-- ResultType
+    PhaseMethod o-- ContextParameter
+    PhaseMethod o-- AdditionalParameter
+
+    PhaseProcessor o-- PhaseProcessorMethod
+    PhaseProcessorMethod o-- PhaseProcessorMethod_Result
+    PhaseProcessorMethod o-- PhaseProcessorMethod_Parameter
+
+    PhaseImpl o-- PhaseMethodImpl
+    PhaseMethodImpl o-- PhaseMethodImpl_Result
+    PhaseMethodImpl o-- PhaseMethodImpl_Parameter
+
+    ContextType o-- ContextType_Property
+    ContextType o-- ContextType_DelegationProperty
+}
+
+@enduml
+
+@startuml syntax
+
+package "Syntax" {
+    PhaseGroup o-- PhaseMethod
+    PhaseMethod o-- ResultType
+    PhaseMethod o-- ContextParameter
+    PhaseMethod o-- AdditionalParameter
+}
+
+@enduml
+
+@startuml analyzer
+
+package "Analyzer" {
+    AnalyzerRoot o-- PhaseProcessor
+    AnalyzerRoot o-- PhaseImpl
+    AnalyzerRoot o-- ContextType
+
+    PhaseProcessor o-- PhaseProcessorMethod
+    PhaseProcessorMethod o-- ResultType
+    PhaseProcessorMethod o-- Parameter
+    PhaseProcessorMethod o-- ContextParameter
+
+    PhaseImpl o-- PhaseMethodImpl
+    PhaseMethodImpl o-- ResultType
+    PhaseMethodImpl o-- Parameter
+    PhaseMethodImpl o-- ContextParameter
+
+    ContextType o-- ContextProperty
+    ContextType o-- ContextDelegationProperty
+}
+
+@enduml
+
+@startuml definition
+
+package "Definition" {
+    DefinitionRoot o-- PhaseProcessor
+    DefinitionRoot o-- PhaseImpl
+    DefinitionRoot o-- ContextType
+
+    PhaseProcessor o-- PhaseProcessorMethod
+    PhaseProcessorMethod o-- ResultType
+    PhaseProcessorMethod o-- Parameter
+    PhaseProcessorMethod o-- ContextParameter
+
+    PhaseImpl o-- PhaseMethodImpl
+    PhaseMethodImpl o-- ResultType
+    PhaseMethodImpl o-- Parameter
+    PhaseMethodImpl o-- ContextParameter
+
+    ContextType o-- ContextProperty
+    ContextType o-- ContextDelegationProperty
+}
+
+@enduml

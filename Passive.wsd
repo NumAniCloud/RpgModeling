@@ -1,0 +1,95 @@
+@startuml Semantics
+
+interface IBattleEvent
+class BattleContext <<user>>
+class PassiveProcessHookHandler <<generated>>
+class PassiveProcess <<generated>>
+class ConcreatePassiveProcess <<user>>
+class Battler <<user>>
+class ConcreateBattleEvent <<user>>
+
+IBattleEvent o-- IPassiveProcessProvider
+BattleEventHandler <-- IBattleEvent
+BattleEventHandler o-- PassiveProcessHookHandler
+IBattleEvent <-- BattleEventHandler
+PassiveProcessHookHandler o-- BattleContext
+IPassiveProcessProvider <-- PassiveProcessHookHandler
+PassiveProcess <-- IPassiveProcessProvider
+
+PassiveProcess <|-- ConcreatePassiveProcess
+IPassiveProcessProvider <|-- Battler
+IBattleEvent <|-- ConcreateBattleEvent
+
+@enduml
+
+@startuml Semantics2
+
+interface IDomainEvent_T <<library>>
+interface IEnumerable_T <<library>>
+interface IPassiveProcessHookHandler_T <<library>>
+class DomainEventHandler_T <<library>>
+class BattleContext <<user>>
+class PassiveProcessHookHandler <<generated>>
+class PassiveProcess <<generated>>
+class ConcreatePassiveProcess <<user>>
+class Battler <<user>>
+class ConcreateBattleEvent <<user>>
+class Ability <<user>>
+class FinalAbility <<generated>>
+
+IDomainEvent_T o-- IEnumerable_T
+DomainEventHandler_T <-- IDomainEvent_T
+DomainEventHandler_T o-- IPassiveProcessHookHandler_T
+IDomainEvent_T <-- DomainEventHandler_T
+PassiveProcessHookHandler o-- BattleContext
+IEnumerable_T <-- PassiveProcessHookHandler
+PassiveProcess <.. IEnumerable_T : T=PassiveProcess
+
+PassiveProcess <|-- ConcreatePassiveProcess
+IEnumerable_T <|-- Battler
+IDomainEvent_T <|-- ConcreateBattleEvent
+IPassiveProcessHookHandler_T <|-- PassiveProcessHookHandler
+
+FinalAbility o-- IEnumerable_T
+FinalAbility o-- Ability
+
+@enduml
+
+@startuml Library
+
+interface IPassiveProcessFunction<TDomain>
+interface IPassiveModifierFunction<TDomain>
+interface IPassiveProcessHookHandler<TDomain>
+interface IBattleEvent<TDomain>
+class StatefulPassiveProcess<TDomain, TDataStore>
+class StatefulPassiveProcessFunction<TEvent, TDomain, TDataStore>
+class StatefulPassiveModifierFunction<TDomain, TData, TDataStore>
+class PassiveProcessFunction<TEvent, TDomain>
+class PassiveModifierFunction<TDomain, TData>
+class PassiveProperty<TDomain>
+class PassiveProcess<TDomain>
+class BattleEventHnalder<TDomain>
+class PassiveProcessHookHandler<TDomain>
+
+IPassiveProcessHookHandler <|-- PassiveProcessHookHandler
+IBattleEvent <-- IPassiveProcessHookHandler
+PassiveProperty <-- PassiveProcessHookHandler
+PassiveProperty o-- PassiveProcess
+IBattleEvent <-- PassiveProperty
+PassiveProcess o-- IPassiveProcessFunction
+PassiveProcess o-- IPassiveModifierFunction
+IPassiveProcessFunction <|-- PassiveProcessFunction
+IPassiveModifierFunction <|-- PassiveModifierFunction
+BattleEventHnalder o-- IPassiveProcessHookHandler
+IBattleEvent <-- IPassiveProcessFunction
+PassiveProperty <-- IPassiveProcessFunction
+PassiveProperty <-- IPassiveModifierFunction
+IBattleEvent <-- BattleEventHnalder
+
+PassiveProcess <|-- StatefulPassiveProcess
+StatefulPassiveProcessFunction <-- StatefulPassiveProcess
+StatefulPassiveModifierFunction <-- StatefulPassiveProcess
+IPassiveProcessFunction <|-- StatefulPassiveProcessFunction
+IPassiveModifierFunction <|-- StatefulPassiveModifierFunction
+
+@enduml

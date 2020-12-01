@@ -1,0 +1,140 @@
+@charset "utf-8";
+
+body
+{
+	font-family: "Arial", "メイリオ";
+	line-height: 1.5em;
+	background-color: #fff;
+	color: #333;
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-left: #ccc solid 1px;
+	border-right: #ccc solid 1px;
+	box-shadow: 0px 0px 18px 9px rgba(210, 230, 230, 0.39);
+}
+
+*::selection
+{
+	background-color: rgba(255, 210, 130, 0.5);
+/*	background-color: rgba(160, 220, 150, 0.5);*/
+}
+
+h1, h2, h3, h4
+{
+	display: block;
+	margin-top: 1.3em;
+}
+
+h1, h2, h3
+{
+	padding: 0.4em 0.5em;
+}
+
+h1
+{
+	font-size: 2.6em;
+	background-color: #ddeeee;
+	border-bottom: 1px solid #999999;
+	line-height: 1.2em;
+}
+h2
+{
+	font-size: 2em;
+	background-color: #eef3f3;
+	border-bottom: 1px solid #999999;
+	line-height: 1.2em;
+}
+h3{
+	font-size: 1.7em;
+	background-color: #eeeeee;
+}
+h4
+{
+	font-size: 1.3em;
+	margin-bottom: 0em;
+	border-bottom: 1px solid #ccc;
+}
+
+p
+{
+	margin-bottom: 0.9em;
+	margin-left: 0.2em;
+}
+
+p code {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #f9f9f9;
+  padding: 1px 5px;
+  display: inline-block;
+}
+
+pre
+{
+  /* border: 1px solid #ccc; */
+  color: auto !important;
+  padding: 3px 5px;
+  display: block;
+}
+
+pre code
+{
+  color: auto !important;
+  background-color: #ececec !important;
+}
+
+code
+{
+  font: 0.95em "Consolas";
+}
+
+hr
+{
+	border: 0;
+	border-bottom: 2px dashed #acc;
+	background-color: #fff;
+}
+
+ul
+{
+	list-style-type: none;
+}
+
+li
+{
+	border-left: 2px solid #cdd;
+	margin-bottom: 2px;
+	padding-left: 0.5em;
+}
+
+em
+{
+	display: none;
+}
+
+table
+{
+	border-collapse: collapse;
+}
+
+th
+{
+	border: 1px solid #8bb !important;
+	background-color: #cdd !important;
+}
+
+td
+{
+	border: 1px solid #8bb !important;
+}
+
+td, th
+{
+	padding: 2px 5px;
+	vertical-align: middle;
+}
